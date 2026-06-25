@@ -1,0 +1,11 @@
+# Game State (personal/session data)
+game_state.json
+
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# OS files
+.DS_Store
+Thumbs.db
