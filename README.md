@@ -49,7 +49,7 @@ A custom Texas Hold'em poker game and simulation skill built on the [Agent Skill
 #### 1. Install Skill
 This skill conforms to the Agent Skills specification. You can install it into your AI Agent workspace using the `skills` CLI:
 ```bash
-npx skills add Alexzjt/TexasHoldemPoker
+npx skills add Alexzjt/texas-holdem-poker
 ```
 This automatically pulls `SKILL.md` and the `scripts/` directory into your Agent's config folder.
 
@@ -129,7 +129,7 @@ PYTHONPATH=scripts python3 scripts/test_poker.py
 #### 1. 快速安装技能
 本技能采用通用的 Agent Skills 规范进行包管理。您可以通过 `npx skills` 一键安装此技能到您的 AI Agent 工作空间：
 ```bash
-npx skills add Alexzjt/TexasHoldemPoker
+npx skills add Alexzjt/texas-holdem-poker
 ```
 该命令会自动将本 GitHub 仓库中的 `SKILL.md` 描述文件和 `scripts/` 目录拉取到您 AI Agent 的技能配置目录中，使其能够立即识别和执行相关的扑克博弈流程。
 
