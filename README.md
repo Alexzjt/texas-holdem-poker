@@ -36,10 +36,12 @@ A custom Texas Hold'em poker game and simulation skill built on the [Agent Skill
 ### 📁 Project Structure
 ```text
 .
-├── SKILL.md             # Main skill instructions defining AI simulation and rendering flows
-├── scripts/             # Python tools and rules engine
-│   ├── poker_engine.py  # Core rules engine, card evaluator, pot manager, and CLI interface
-│   └── test_poker.py    # Test suite verifying hand evaluations, split pots, and side pots
+├── skills/
+│   └── texas-holdem-poker/
+│       ├── SKILL.md             # Main skill instructions defining AI simulation and rendering flows
+│       └── scripts/             # Python tools and rules engine
+│           ├── poker_engine.py  # Core rules engine, card evaluator, pot manager, and CLI interface
+│           └── test_poker.py    # Test suite verifying hand evaluations, split pots, and side pots
 ├── game_state.json      # Active hand configuration and state storage (auto-saved)
 └── README.md            # Project description document
 ```
@@ -51,7 +53,7 @@ This skill conforms to the Agent Skills specification. You can install it into y
 ```bash
 npx skills add Alexzjt/texas-holdem-poker
 ```
-This automatically pulls `SKILL.md` and the `scripts/` directory into your Agent's config folder.
+This automatically pulls the `skills/texas-holdem-poker/` directory (containing `SKILL.md` and `scripts/` subdirectory) into your Agent's config folder.
 
 #### 2. Requirements
 The backend engine is built with Python 3 standard libraries and has **no third-party dependencies**. Simply ensure Python 3 is installed.
@@ -70,30 +72,30 @@ The AI Assistant will automatically:
 You can also interact directly with the CLI engine in your terminal:
 *   **Initialize a game**:
     ```bash
-    python3 scripts/poker_engine.py init --players "You,Alex,Jamie,Taylor,Morgan"
+    python3 skills/texas-holdem-poker/scripts/poker_engine.py init --players "You,Alex,Jamie,Taylor,Morgan"
     ```
 *   **Submit a player action**:
     ```bash
     # Alex Calls
-    python3 scripts/poker_engine.py action --player "Alex" --type call
+    python3 skills/texas-holdem-poker/scripts/poker_engine.py action --player "Alex" --type call
     # Raise to 50
-    python3 scripts/poker_engine.py action --player "You" --type raise --amount 50
+    python3 skills/texas-holdem-poker/scripts/poker_engine.py action --player "You" --type raise --amount 50
     # Taylor Folds
-    python3 scripts/poker_engine.py action --player "Taylor" --type fold
+    python3 skills/texas-holdem-poker/scripts/poker_engine.py action --player "Taylor" --type fold
     ```
 *   **Start next hand**:
     ```bash
-    python3 scripts/poker_engine.py next_hand
+    python3 skills/texas-holdem-poker/scripts/poker_engine.py next_hand
     ```
 *   **Print current JSON state**:
     ```bash
-    python3 scripts/poker_engine.py show
+    python3 skills/texas-holdem-poker/scripts/poker_engine.py show
     ```
 
 ### 🧪 Testing
 Run the unit tests to verify the rules engine and pot calculations:
 ```bash
-PYTHONPATH=scripts python3 scripts/test_poker.py
+PYTHONPATH=skills/texas-holdem-poker/scripts python3 skills/texas-holdem-poker/scripts/test_poker.py
 ```
 
 ### ⚠️ Disclaimer
@@ -116,10 +118,12 @@ PYTHONPATH=scripts python3 scripts/test_poker.py
 ### 📁 目录结构
 ```text
 .
-├── SKILL.md             # 技能主指令文件，定义了 AI 模拟对手、发牌与渲染 UI 的核心执行流程
-├── scripts/             # 自动化工具脚本
-│   ├── poker_engine.py  # 德州扑克核心逻辑引擎 (负责发牌、底池/边池计算、状态流转、筹码流转及 CLI)
-│   └── test_poker.py    # 规则与引擎逻辑单元测试 (覆盖边池、多重 All-in、加注判定等)
+├── skills/
+│   └── texas-holdem-poker/
+│       ├── SKILL.md             # 技能主指令文件，定义了 AI 模拟对手、发牌与渲染 UI 的核心执行流程
+│       └── scripts/             # 自动化工具脚本
+│           ├── poker_engine.py  # 德州扑克核心逻辑引擎 (负责发牌、底池/边池计算、状态流转、筹码流转及 CLI)
+│           └── test_poker.py    # 规则与引擎逻辑单元测试 (覆盖边池、多重 All-in、加注判定等)
 ├── game_state.json      # 实时游戏状态存档文件 (自动保存/读取)
 └── README.md            # 项目说明文档 (本文件)
 ```
@@ -131,7 +135,7 @@ PYTHONPATH=scripts python3 scripts/test_poker.py
 ```bash
 npx skills add Alexzjt/texas-holdem-poker
 ```
-该命令会自动将本 GitHub 仓库中的 `SKILL.md` 描述文件和 `scripts/` 目录拉取到您 AI Agent 的技能配置目录中，使其能够立即识别和执行相关的扑克博弈流程。
+该命令会自动将本 GitHub 仓库中的 `skills/texas-holdem-poker/` 目录（包含 `SKILL.md` 描述文件和 `scripts/` 子目录）拉取到您 AI Agent 的技能配置目录中，使其能够立即识别和执行相关的扑克博弈流程。
 
 #### 2. 本地环境准备
 本技能的规则计算引擎基于 Python 3 标准库构建，**无需安装任何第三方库**。您只需确保本地安装了 Python 3 环境即可。
@@ -150,30 +154,30 @@ AI 助手将自动加载本 Skill 并完成以下动作：
 您也可以脱离 AI 终端，直接在终端使用命令行操作底层扑克引擎：
 *   **初始化游戏**：
     ```bash
-    python3 scripts/poker_engine.py init --players "You,Alex,Jamie,Taylor,Morgan"
+    python3 skills/texas-holdem-poker/scripts/poker_engine.py init --players "You,Alex,Jamie,Taylor,Morgan"
     ```
 *   **玩家行动**：
     ```bash
     # Alex 跟注 (Call)
-    python3 scripts/poker_engine.py action --player "Alex" --type call
+    python3 skills/texas-holdem-poker/scripts/poker_engine.py action --player "Alex" --type call
     # 玩家加注到 50 (Raise to 50)
-    python3 scripts/poker_engine.py action --player "You" --type raise --amount 50
+    python3 skills/texas-holdem-poker/scripts/poker_engine.py action --player "You" --type raise --amount 50
     # Taylor 弃牌 (Fold)
-    python3 scripts/poker_engine.py action --player "Taylor" --type fold
+    python3 skills/texas-holdem-poker/scripts/poker_engine.py action --player "Taylor" --type fold
     ```
 *   **开始下一手牌**：
     ```bash
-    python3 scripts/poker_engine.py next_hand
+    python3 skills/texas-holdem-poker/scripts/poker_engine.py next_hand
     ```
 *   **打印当前游戏 JSON 状态**：
     ```bash
-    python3 scripts/poker_engine.py show
+    python3 skills/texas-holdem-poker/scripts/poker_engine.py show
     ```
 
 ### 🧪 运行测试
 为确保扑克规则、牌力计算及分池算法的 100% 准确性，您可以在主目录下运行单元测试：
 ```bash
-PYTHONPATH=scripts python3 scripts/test_poker.py
+PYTHONPATH=skills/texas-holdem-poker/scripts python3 skills/texas-holdem-poker/scripts/test_poker.py
 ```
 
 ### ⚠️ 免责声明
